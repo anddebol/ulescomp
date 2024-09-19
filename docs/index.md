@@ -15,6 +15,6 @@ here is a scheme for the experiments
 
 ### Output
 
-for output see notebooks [here](notebooks/output_description.ipynb)
+for output see notebooks [here](../notebooks/output_description.ipynb)
 
 
