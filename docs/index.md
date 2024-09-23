@@ -26,29 +26,17 @@ Currently there are 2 paticipant models:
 
 - Fluidity from Institute of Atmospheric Physics CAS
 > Basic Information for Fluidity:
-
 > Numerics:
-
 > Spatial discretisations: first-order and second-order Continuous Galerkin, Discontinuous Galerkin, Control Volume
-
 > Temporal discretisation: first-order explicit, second-order semi-implicit and implicit
-
 > Turbulence Package:
-
 > Reynolds-Averaged Navier-Stokes (RANS) Modelling
-
 > Generic length scale turbulence parameterization (based on two equations, for the transport of turbulent kinetic energy (TKE) and a generic second quantity)
-
 > Standard k – ε Turbulence Model
-
 > Large-Eddy Simulation (LES):
-
 > Second-order dissipation model
-
 > Fourth-order dissipation model
-
 > Dynamic Smagorinsky model
-
 
  to become a participant send an email to [Andrey Debolskiy](and.debol@srcc.msu.ru) or [Evgeny Mortikov](mortikov@srcc.msu.ru)
 
@@ -82,7 +70,7 @@ for testing non-stratified flow is considered.
 ```
 - Integration model time: 2hours
 - Buildings setup: surface dynamic and thermal roughness parameters `z0m = 0.01 m`, `z0h = z0m/10.0`. `building_height = 16 m`. 
-- Building configuration: SRF1
+- Building configuration: EXP1
 ```
 h = 16 # [m], building height
         patch_1 {
@@ -106,7 +94,55 @@ h = 16 # [m], building height
                 yperiod = 4.0 * h;                  # periodicity in -y
         }
 ```
+- EXP2 
+```
+h = 16 # [m], building height
+        patch_1 {
+                type = "box";
 
+                xmin = 0.0; xmax = h;   # patch dimensions
+                ymin =  0.0; ymax = h;
+                height = h;
+
+                xperiod = 8.0 * h;                      #  periodicity in -x
+                yperiod = 4.0 * h;                      #  periodicity in -y
+        }
+        patch_2 {
+                type = "box";                   # patch type: "box" || "hill"
+
+                xmin = 4.0 * h ; xmax = 5.0 * h;   # patch dimensions
+                ymin =  2.0 * h; ymax = 3.0 * h;
+                height = h/2.0;
+
+                xperiod = 8.0 * h;                  # periodicity in -x
+                yperiod = 4.0 * h;                  # periodicity in -y
+        }
+```
+- EXP3
+
+```
+h = 16 # [m], building height
+        patch_1 {
+                type = "box";
+
+                xmin = 0.0; xmax = h/2.0;   # patch dimensions
+                ymin =  0.0; ymax = h/2.0;
+                height = h;
+
+                xperiod = 8.0 * h;                      #  periodicity in -x
+                yperiod = 4.0 * h;                      #  periodicity in -y
+        }
+        patch_2 {
+                type = "box";                   # patch type: "box" || "hill"
+
+                xmin = 4.0 * h ; xmax = 4.5 * h;   # patch dimensions
+                ymin =  2.0 * h; ymax = 2.5 * h;
+                height = h;
+
+                xperiod = 8.0 * h;                  # periodicity in -x
+                yperiod = 4.0 * h;                  # periodicity in -y
+        }
+```
 #### Stratified idealized urban cases
 coming soon
 ### Realistic urban developments
@@ -116,7 +152,8 @@ cooming soon
 
 for output see notebooks [here](https://github.com/anddebol/ulescomp/tree/main/notebooks)
 
+Example of output for EXP1
+![image](assets/images/u_example.png)
 
 ## Comparison
-
 
